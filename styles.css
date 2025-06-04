@@ -1,0 +1,172 @@
+/* === Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(to right, rgb(12, 5, 87), rgb(33, 81, 148), rgb(14, 52, 105));
+  cursor: none;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* === General Creature Styling === */
+.jellyfish, .jellyfish-1, .jellyfish-2, .jellyfish-3,
+.octopus-1, .octopus-2, .octopus-3 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  animation: float 6s ease-in-out infinite;
+  transition: transform 0.6s ease-in-out;
+  cursor: pointer;
+}
+
+/* === Specific Positions === */
+.jellyfish-1 {
+  left: 40%;
+  top: 60%;
+  z-index: 3;
+}
+
+.jellyfish-2 {
+  left: 30%;
+  top: 80%;
+  z-index: 2;
+}
+
+.jellyfish-3 {
+  right: 20%;
+  top: 80%;
+  transform: translate(-60%, -90%);
+  z-index: 1;
+}
+
+.octopus-1 {
+  left: 20%;
+  top: 75%;
+  z-index: 1;
+}
+
+.octopus-2 {
+  left: 40%;
+  top: 85%;
+  z-index: 1;
+}
+
+.octopus-3 {
+  left: 70%;
+  top: 78%;
+  z-index: 1;
+}
+
+/* === Hover Effect === */
+.jellyfish-1:hover,
+.jellyfish-2:hover,
+.jellyfish-3:hover,
+.octopus-1:hover,
+.octopus-2:hover,
+.octopus-3:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* === Jellyfish Styling === */
+
+/* Bell (head) */
+.bell {
+  width: 80px;
+  height: 50px;
+  background: radial-gradient(circle at center, #a8f9ff, #0ff);
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 0 0 30px #00f7ff;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Tentacles */
+.tentacles {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: -10px;
+}
+
+.tentacle {
+  width: 4px;
+  height: 60px;
+  background: linear-gradient(to bottom, #7bb1c3, transparent);
+  animation: wave 3s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+.tentacle:nth-child(2) { animation-delay: 0.2s; }
+.tentacle:nth-child(3) { animation-delay: 0.4s; }
+.tentacle:nth-child(4) { animation-delay: 0.6s; }
+
+/* === Octopus Styling === */
+
+/* Octopus Head */
+.octopus-head {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at 30% 30%, #ff69b4, #c71585);
+  border-radius: 50%;
+  box-shadow: 0 0 25px #ff69b4;
+  position: relative;
+}
+
+/* Tentacle Container */
+.octopus-tentacles {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: -8px;
+  width: 100px;
+}
+
+/* Tentacles */
+.octopus-tentacle {
+  width: 6px;
+  height: 40px;
+  background: linear-gradient(to bottom, #d87093, transparent);
+  border-radius: 10px;
+  animation: curl 3s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.octopus-tentacle:nth-child(odd) {
+  animation-delay: 0.3s;
+}
+.octopus-tentacle:nth-child(even) {
+  animation-delay: 0.6s;
+}
+
+/* === Animations === */
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-20px); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes curl {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+}
